@@ -4,464 +4,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heer Patel — Data Scientist</title>
-    <meta name="description"
-        content="Data Scientist & ML Engineer building production systems that deliver measurable business impact.">
+    <title>Heer Patel — Data & ML</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;1,400&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --bg: #fafafa;
-            --bg-elevated: #ffffff;
-            --text: #171717;
-            --text-secondary: #525252;
-            --text-tertiary: #737373;
-            --border: #e5e5e5;
-            --border-subtle: #f0f0f0;
-            --accent: #171717;
-            --accent-muted: #404040;
-            --highlight: #3b82f6;
-            --highlight-soft: rgba(59, 130, 246, 0.08);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Newsreader', Georgia, serif;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0a0a0a;
-                --bg-elevated: #141414;
-                --text: #fafafa;
-                --text-secondary: #a3a3a3;
-                --text-tertiary: #737373;
-                --border: #262626;
-                --border-subtle: #1a1a1a;
-                --accent: #fafafa;
-                --accent-muted: #d4d4d4;
-                --highlight: #60a5fa;
-                --highlight-soft: rgba(96, 165, 250, 0.1);
-            }
+            --bg: #09090b;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --text: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.4);
+            --purple: #8b5cf6;
+            --emerald: #10b981;
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box
         }
 
         html {
-            scroll-behavior: smooth;
-            font-size: 16px;
+            scroll-behavior: smooth
         }
 
         body {
-            font-family: var(--font-sans);
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
         }
 
         ::selection {
-            background: var(--highlight);
-            color: white;
+            background: var(--accent);
+            color: #fff
         }
 
         a {
             color: inherit;
-            text-decoration: none;
+            text-decoration: none
         }
 
-        /* Header */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden
+        }
+
+        .mesh-gradient {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite
+        }
+
+        .mesh-1 {
+            background: var(--accent);
+            top: -300px;
+            right: -200px
+        }
+
+        .mesh-2 {
+            background: var(--purple);
+            bottom: -300px;
+            left: -200px;
+            animation-delay: -10s
+        }
+
+        .mesh-3 {
+            background: var(--emerald);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.08;
+            animation-delay: -5s
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            50% {
+                transform: translate(30px, -30px) scale(1.05)
+            }
+        }
+
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 0 24px;
-            height: 64px;
+            padding: 20px 48px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border-subtle);
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(9, 9, 11, 0.8);
+            border-bottom: 1px solid var(--border)
         }
 
         .logo {
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: -0.02em;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 32px
         }
 
         nav a {
             font-size: 14px;
             color: var(--text-secondary);
-            transition: color 0.15s ease;
+            transition: color .2s
         }
 
         nav a:hover {
-            color: var(--text);
+            color: var(--text)
         }
 
         .nav-cta {
-            padding: 8px 16px;
-            background: var(--accent);
+            padding: 10px 20px;
+            background: var(--text);
             color: var(--bg);
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            transition: opacity 0.15s ease;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px
         }
 
         .nav-cta:hover {
-            opacity: 0.85;
+            opacity: .9
         }
 
-        /* Main */
         main {
-            max-width: 1120px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 48px
         }
 
         section {
-            padding: 120px 0;
-            border-bottom: 1px solid var(--border-subtle);
+            padding: 140px 0
         }
 
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-top: 64px;
-            border-bottom: none;
+            padding-top: 80px
         }
 
-        .hero-intro {
-            display: flex;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-        }
-
-        .hero-intro span {
+            padding: 6px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
             font-size: 13px;
-            color: var(--text-tertiary);
-            letter-spacing: 0.02em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            width: fit-content
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--emerald);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 var(--emerald)
+            }
+
+            50% {
+                opacity: .7;
+                box-shadow: 0 0 0 8px transparent
+            }
         }
 
         .hero h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(40px, 7vw, 72px);
+            font-family: 'Newsreader', serif;
+            font-size: clamp(48px, 8vw, 80px);
             font-weight: 400;
-            line-height: 1.1;
+            line-height: 1.05;
             letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            max-width: 900px;
+            margin-bottom: 24px
         }
 
         .hero h1 em {
             font-style: italic;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
         }
 
-        .hero-description {
+        .hero-desc {
             font-size: 18px;
             color: var(--text-secondary);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 48px;
+            max-width: 580px;
+            margin-bottom: 48px
         }
 
-        .hero-stats {
+        .hero-cta {
             display: flex;
-            gap: 48px;
-            padding-top: 48px;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-tertiary);
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 64px;
+            gap: 16px;
+            margin-bottom: 80px
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 14px 28px;
             font-size: 14px;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.15s ease;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all .2s
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: var(--bg);
+            background: var(--text);
+            color: var(--bg)
         }
 
         .btn-primary:hover {
-            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.15)
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--text);
+            background: var(--bg-card);
             border: 1px solid var(--border);
+            color: var(--text)
         }
 
         .btn-secondary:hover {
-            background: var(--bg-elevated);
-            border-color: var(--text-tertiary);
+            background: var(--bg-card-hover);
+            border-color: var(--text-muted)
         }
 
         .btn svg {
             width: 16px;
-            height: 16px;
+            height: 16px
         }
 
-        /* Section Headers */
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border)
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px
+        }
+
         .section-header {
-            margin-bottom: 64px;
+            margin-bottom: 64px
         }
 
         .section-label {
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--text-tertiary);
-            margin-bottom: 16px;
+            color: var(--accent);
+            margin-bottom: 16px
         }
 
         .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 4vw, 48px);
+            font-family: 'Newsreader', serif;
+            font-size: clamp(36px, 5vw, 56px);
             font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
+            letter-spacing: -0.02em
         }
 
-        /* Experience */
-        .experience-list {
+        .exp-list {
             display: flex;
             flex-direction: column;
+            gap: 32px
         }
 
-        .experience-item {
+        .exp-card {
             display: grid;
-            grid-template-columns: 200px 1fr;
+            grid-template-columns: 220px 1fr;
             gap: 48px;
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all .3s
         }
 
-        .experience-item:first-child {
-            border-top: none;
-            padding-top: 0;
+        .exp-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.1)
         }
 
-        .experience-meta {
-            position: sticky;
-            top: 120px;
-            height: fit-content;
-        }
-
-        .experience-company {
+        .exp-company {
             font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 4px;
+            font-size: 16px;
+            margin-bottom: 4px
         }
 
-        .experience-role {
+        .exp-role {
             font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
+            color: var(--accent);
+            margin-bottom: 8px
         }
 
-        .experience-date {
+        .exp-date {
             font-size: 13px;
-            color: var(--text-tertiary);
+            color: var(--text-muted)
         }
 
-        .experience-content p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .experience-content strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .experience-metrics {
+        .exp-metrics {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 10px;
+            margin-bottom: 20px
         }
 
-        .metric {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .exp-metric {
             padding: 8px 14px;
-            background: var(--highlight-soft);
-            border-radius: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--accent)
         }
 
-        .metric-value {
-            color: var(--highlight);
+        .exp-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.7
+        }
+
+        .exp-content strong {
+            color: var(--text);
+            font-weight: 500
         }
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 8px
         }
 
         .tag {
             font-size: 12px;
-            padding: 4px 10px;
-            background: var(--bg-elevated);
+            padding: 6px 12px;
+            background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 4px;
-            color: var(--text-tertiary);
+            border-radius: 6px;
+            color: var(--text-muted)
         }
 
-        /* Projects */
+        .project-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
         }
 
         .project-card {
-            background: var(--bg-elevated);
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 20px;
             padding: 32px;
-            transition: all 0.2s ease;
+            transition: all .4s cubic-bezier(.4, 0, .2, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px
         }
 
-        .project-card:hover {
-            border-color: var(--text-tertiary);
+        .projects-grid:hover .project-card {
+            opacity: .5;
+            filter: blur(2px)
+        }
+
+        .projects-grid:hover .project-card:hover {
+            opacity: 1;
+            filter: blur(0);
+            border-color: var(--accent);
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.2)
         }
 
         .project-card.featured {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            grid-column: span 2
+        }
+
+        .project-cat {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px
+        }
+
+        .project-title {
+            font-family: 'Newsreader', serif;
+            font-size: 22px;
+            margin-bottom: 12px
         }
 
         .project-metrics {
             display: flex;
             gap: 24px;
-            margin-bottom: 24px;
+            margin-bottom: 20px
         }
 
-        .project-metric {
-            text-align: center;
-        }
-
-        .project-metric-value {
+        .pm-value {
             font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: var(--text);
+            font-weight: 700
         }
 
-        .project-metric-label {
+        .pm-label {
             font-size: 11px;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05em
         }
 
-        .project-category {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--highlight);
-            margin-bottom: 12px;
-        }
-
-        .project-title {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
-
-        .project-description {
+        .project-desc {
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
 
         .project-tech span {
-            font-size: 12px;
+            font-size: 11px;
             padding: 4px 10px;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 4px;
-            color: var(--text-tertiary);
+            color: var(--text-muted)
         }
 
         .project-link {
@@ -469,372 +519,332 @@
             align-items: center;
             gap: 6px;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text);
-            transition: gap 0.2s ease;
+            transition: gap .2s
         }
 
         .project-link:hover {
             gap: 10px;
+            color: var(--accent)
         }
 
         .project-link svg {
             width: 14px;
-            height: 14px;
+            height: 14px
         }
 
-        .project-visual {
-            background: var(--bg);
-            border-radius: 8px;
-            padding: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-visual .project-metrics {
-            margin: 0;
-        }
-
-        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 24px
         }
 
         .skill-group {
-            padding: 24px;
-            background: var(--bg-elevated);
+            padding: 28px;
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
+            transition: all .3s
+        }
+
+        .skill-group:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px)
         }
 
         .skill-group h3 {
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--text-tertiary);
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 20px
         }
 
         .skill-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 12px
         }
 
         .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             font-size: 14px;
+            color: var(--text-secondary)
         }
 
-        .skill-level {
-            font-size: 11px;
-            padding: 2px 8px;
-            background: var(--highlight-soft);
-            color: var(--highlight);
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        /* Education */
-        .education-card {
+        .edu-card {
             display: flex;
-            gap: 48px;
+            gap: 40px;
             padding: 48px;
-            background: var(--bg-elevated);
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 24px
         }
 
-        .education-badge {
+        .edu-badge {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1e40af, var(--accent));
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .education-badge span {
             font-size: 20px;
-            font-weight: 600;
-            color: white;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0
         }
 
-        .education-content h3 {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 4px;
+        .edu-content h3 {
+            font-family: 'Newsreader', serif;
+            font-size: 28px;
+            margin-bottom: 8px
         }
 
-        .education-content h4 {
+        .edu-content h4 {
             font-size: 15px;
-            font-weight: 400;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            font-weight: 400;
+            margin-bottom: 24px
         }
 
-        .education-details {
+        .edu-details {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px
         }
 
-        .education-detail {
+        .edu-detail {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
             padding: 10px 16px;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            color: var(--text-secondary);
+            font-size: 14px;
+            color: var(--text-secondary)
         }
 
-        .education-detail svg {
+        .edu-detail svg {
             width: 16px;
             height: 16px;
-            color: var(--highlight);
+            color: var(--accent)
         }
 
-        /* Contact */
-        .contact-section {
+        .contact {
             text-align: center;
-            padding: 160px 0;
+            padding: 160px 0
         }
 
         .contact-title {
-            font-family: var(--font-serif);
-            font-size: clamp(36px, 5vw, 56px);
+            font-family: 'Newsreader', serif;
+            font-size: clamp(40px, 6vw, 64px);
             font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 20px
         }
 
-        .contact-description {
+        .contact-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .contact-desc {
             font-size: 17px;
             color: var(--text-secondary);
             max-width: 480px;
-            margin: 0 auto 48px;
-            line-height: 1.7;
+            margin: 0 auto 48px
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 16px;
+            flex-wrap: wrap
         }
 
         .contact-link {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 24px;
-            background: var(--bg-elevated);
+            padding: 16px 28px;
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 500;
-            transition: all 0.15s ease;
+            transition: all .2s
         }
 
         .contact-link:hover {
-            border-color: var(--text-tertiary);
+            border-color: var(--accent);
+            transform: translateY(-2px)
         }
 
         .contact-link svg {
             width: 18px;
             height: 18px;
-            color: var(--text-secondary);
+            color: var(--text-secondary)
         }
 
-        /* Footer */
         footer {
-            padding: 32px 24px;
+            padding: 32px 48px;
             border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1120px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 0 auto
         }
 
         .footer-text {
             font-size: 13px;
-            color: var(--text-tertiary);
+            color: var(--text-muted)
         }
 
         .footer-links {
             display: flex;
-            gap: 24px;
+            gap: 24px
         }
 
         .footer-links a {
             font-size: 13px;
             color: var(--text-secondary);
-            transition: color 0.15s ease;
+            transition: color .2s
         }
 
         .footer-links a:hover {
-            color: var(--text);
+            color: var(--text)
         }
 
-        /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(30px);
+            transition: all .6s cubic-bezier(.4, 0, .2, 1)
         }
 
         .fade-in.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0)
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media(max-width:1024px) {
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr)
             }
 
-            .experience-item {
-                grid-template-columns: 1fr;
-                gap: 24px;
+            .exp-card {
+                grid-template-columns: 1fr
             }
 
-            .experience-meta {
-                position: static;
+            .project-card.featured {
+                grid-column: span 1
             }
         }
 
-        @media (max-width: 768px) {
+        @media(max-width:768px) {
             header {
-                padding: 0 16px;
-            }
-
-            nav {
-                gap: 16px;
+                padding: 16px 24px
             }
 
             nav a:not(.nav-cta) {
-                display: none;
+                display: none
+            }
+
+            main {
+                padding: 0 24px
             }
 
             section {
-                padding: 80px 0;
+                padding: 100px 0
             }
 
             .hero {
                 min-height: auto;
-                padding: 120px 0 80px;
+                padding: 120px 0 80px
             }
 
             .hero-stats {
                 flex-wrap: wrap;
-                gap: 24px;
+                gap: 32px
             }
 
-            .stat {
-                flex: 1;
-                min-width: 120px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card.featured {
-                grid-column: span 1;
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
+            .projects-grid,
             .skills-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr
             }
 
-            .education-card {
-                flex-direction: column;
-                padding: 32px;
-                gap: 24px;
-            }
-
-            .contact-section {
-                padding: 100px 0;
+            .edu-card {
+                flex-direction: column
             }
 
             footer {
                 flex-direction: column;
                 gap: 16px;
-                text-align: center;
+                text-align: center
             }
         }
 
         section[id] {
-            scroll-margin-top: 80px;
+            scroll-margin-top: 100px
         }
     </style>
 </head>
 
 <body>
+    <div class="bg-mesh">
+        <div class="mesh-gradient mesh-1"></div>
+        <div class="mesh-gradient mesh-2"></div>
+        <div class="mesh-gradient mesh-3"></div>
+    </div>
+
     <header>
         <a href="#" class="logo">Heer Patel</a>
         <nav>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
-            <a href="https://drive.google.com/file/d/12VIurF5s8OZaJ47AqPqMrWh8NhUgyUFz/view?usp=sharing" target="_blank"
+            <a href="https://drive.google.com/file/d/12VIurF5s8OZaJ47AqPqMrWh8NhUgyUFz/view" target="_blank"
                 class="nav-cta">Resume</a>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-intro">
-                <span class="status-dot"></span>
-                <span>Available May 2026</span>
-            </div>
-            <h1>I build <em>data systems</em> that drive business decisions.</h1>
-            <p class="hero-description">
-                Data Scientist at UIC. I design ML pipelines, forecasting models, and analytics dashboards that turn
-                complex data into measurable outcomes.
+            <div class="hero-badge"><span class="pulse"></span>Open to opportunities · May 2026</div>
+            <h1>Turning raw data into <em>decisions that matter.</em></h1>
+            <p class="hero-desc">I'm a senior at UIC studying Information & Decision Sciences and Finance. I build
+                forecasting models, analytics dashboards, and ML pipelines that help businesses make smarter decisions.
             </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    View work
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">See my work <svg xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
-                <a href="mailto:heerpatel7016@gmail.com" class="btn btn-secondary">Get in touch</a>
+                    </svg></a>
+                <a href="mailto:heerpatel7016@gmail.com" class="btn btn-secondary">Say hello</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-value">$2.7M</span>
-                    <span class="stat-label">Projected ROI impact</span>
+                    <div class="stat-value">$2.7M</div>
+                    <div class="stat-label">Projected ROI</div>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">13.5%</span>
-                    <span class="stat-label">MAPE (forecasting)</span>
+                    <div class="stat-value">13.5%</div>
+                    <div class="stat-label">MAPE achieved</div>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">100K+</span>
-                    <span class="stat-label">Records processed</span>
+                    <div class="stat-value">100K+</div>
+                    <div class="stat-label">Records analyzed</div>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">90%</span>
-                    <span class="stat-label">Model AUC</span>
+                    <div class="stat-value">90%</div>
+                    <div class="stat-label">Model AUC</div>
                 </div>
             </div>
         </section>
@@ -842,421 +852,291 @@
         <section id="experience">
             <div class="section-header fade-in">
                 <p class="section-label">Experience</p>
-                <h2 class="section-title">Where I've built impact</h2>
+                <h2 class="section-title">Where I've made an impact</h2>
             </div>
-
-            <div class="experience-list">
-                <article class="experience-item fade-in">
-                    <div class="experience-meta">
-                        <p class="experience-company">Manilal and Sons</p>
-                        <p class="experience-role">Data Analytics Engineer</p>
-                        <p class="experience-date">2020 — 2022 · Gujarat, India</p>
+            <div class="exp-list">
+                <div class="exp-card fade-in">
+                    <div>
+                        <p class="exp-company">Manilal and Sons</p>
+                        <p class="exp-role">Data Analytics Engineer</p>
+                        <p class="exp-date">2020 – 2022 · Gujarat, India</p>
                     </div>
-                    <div class="experience-content">
-                        <div class="experience-metrics">
-                            <span class="metric"><span class="metric-value">+15%</span> inventory turnover</span>
-                            <span class="metric"><span class="metric-value">+12%</span> margin increase</span>
-                            <span class="metric"><span class="metric-value">-18%</span> delivery time</span>
+                    <div class="exp-content">
+                        <div class="exp-metrics"><span class="exp-metric">+15% inventory turnover</span><span
+                                class="exp-metric">+12% margins</span><span class="exp-metric">-18% delivery time</span>
                         </div>
-                        <p>
-                            Built demand forecasting models using 5 years of historical sales data, improving
-                            <strong>inventory turnover by 15%</strong> and reducing stockout frequency across product
-                            categories.
-                        </p>
-                        <p>
-                            Designed Power BI dashboards tracking pricing dynamics and competitive trends. Analysis
-                            enabled data-driven decisions that <strong>increased margins by 12%</strong>.
-                        </p>
-                        <p>
-                            Evaluated delivery performance data and identified routing constraints that <strong>reduced
-                                delivery times by 18%</strong>.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Power BI</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">Forecasting</span>
-                        </div>
+                        <p>Built demand forecasting models using 5 years of sales data. The models helped reduce
+                            stockouts and improved <strong>inventory turnover by 15%</strong>.</p>
+                        <p>Created Power BI dashboards for pricing analysis. These insights helped the team increase
+                            <strong>profit margins by 12%</strong> on key products.</p>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">Power BI</span><span
+                                class="tag">SQL</span><span class="tag">Forecasting</span></div>
                     </div>
-                </article>
-
-                <article class="experience-item fade-in">
-                    <div class="experience-meta">
-                        <p class="experience-company">UIC College of Business</p>
-                        <p class="experience-role">Teaching Assistant</p>
-                        <p class="experience-date">2023 — Present · Chicago, IL</p>
+                </div>
+                <div class="exp-card fade-in">
+                    <div>
+                        <p class="exp-company">UIC College of Business</p>
+                        <p class="exp-role">Teaching Assistant</p>
+                        <p class="exp-date">2023 – Present · Chicago</p>
                     </div>
-                    <div class="experience-content">
-                        <div class="experience-metrics">
-                            <span class="metric"><span class="metric-value">200+</span> students taught</span>
-                            <span class="metric"><span class="metric-value">+15%</span> exam score improvement</span>
-                        </div>
-                        <p>
-                            Teaching <strong>200+ undergraduates</strong> across Business Statistics, MIS, and Supply
-                            Chain courses. Structured assignment rubrics led to <strong>25% improvement in project
-                                consistency</strong>.
-                        </p>
-                        <p>
-                            Lead weekly hands-on lab sessions covering statistical modeling, data visualization, and
-                            business intelligence tools.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">Statistics</span>
-                            <span class="tag">Data Analysis</span>
-                            <span class="tag">Excel</span>
+                    <div class="exp-content">
+                        <div class="exp-metrics"><span class="exp-metric">200+ students</span><span
+                                class="exp-metric">+15% exam scores</span></div>
+                        <p>I teach sections of Business Statistics, MIS, and Supply Chain to over <strong>200
+                                undergraduates</strong>. Structured my own rubrics which improved project consistency by
+                            25%.</p>
+                        <div class="tags"><span class="tag">Statistics</span><span class="tag">Excel</span><span
+                                class="tag">Teaching</span></div>
+                    </div>
+                </div>
+                <div class="exp-card fade-in">
+                    <div>
+                        <p class="exp-company">UIC Ed Tech Lab</p>
+                        <p class="exp-role">Computer Specialist</p>
+                        <p class="exp-date">2023 – Present · Chicago</p>
+                    </div>
+                    <div class="exp-content">
+                        <div class="exp-metrics"><span class="exp-metric">150 tickets/month</span><span
+                                class="exp-metric">-40% downtime</span></div>
+                        <p>Resolved around <strong>150 incidents monthly</strong> across 200+ endpoints. Streamlined
+                            workflows that cut ticket resolution time by 30%.</p>
+                        <div class="tags"><span class="tag">IT Support</span><span class="tag">Documentation</span>
                         </div>
                     </div>
-                </article>
-
-                <article class="experience-item fade-in">
-                    <div class="experience-meta">
-                        <p class="experience-company">UIC Ed Tech Lab</p>
-                        <p class="experience-role">Computer Specialist</p>
-                        <p class="experience-date">2023 — Present · Chicago, IL</p>
-                    </div>
-                    <div class="experience-content">
-                        <div class="experience-metrics">
-                            <span class="metric"><span class="metric-value">150</span> incidents/month</span>
-                            <span class="metric"><span class="metric-value">-40%</span> system downtime</span>
-                        </div>
-                        <p>
-                            Resolved <strong>~150 software/hardware incidents monthly</strong> across 200+ endpoints,
-                            reducing system downtime by <strong>40%</strong>.
-                        </p>
-                        <p>
-                            Streamlined IT helpdesk workflows and documentation, decreasing average ticket resolution
-                            time by <strong>30%</strong>.
-                        </p>
-                        <div class="tags">
-                            <span class="tag">IT Support</span>
-                            <span class="tag">Process Optimization</span>
-                        </div>
-                    </div>
-                </article>
+                </div>
             </div>
         </section>
 
         <section id="projects">
             <div class="section-header fade-in">
                 <p class="section-label">Projects</p>
-                <h2 class="section-title">Selected work</h2>
+                <h2 class="section-title">Things I've built</h2>
             </div>
-
+            <div class="project-filters fade-in">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="analytics">Data Analytics</button>
+                <button class="filter-btn" data-filter="finance">Finance</button>
+                <button class="filter-btn" data-filter="bi">Business Intelligence</button>
+            </div>
             <div class="projects-grid">
-                <article class="project-card featured fade-in">
-                    <div class="project-content">
-                        <p class="project-category">Time Series · Forecasting</p>
-                        <h3 class="project-title">M5 Demand Forecasting Pipeline</h3>
-                        <p class="project-description">
-                            Production-ready retail demand forecasting achieving 13.51% MAPE, outperforming industry
-                            benchmarks of 15-25%. Built with ARIMA, XGBoost, and Seasonal Naive, validated through
-                            rigorous rolling backtests.
-                        </p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>ARIMA</span>
-                            <span>XGBoost</span>
-                            <span>Pandas</span>
+                <div class="project-card featured fade-in" data-category="ml">
+                    <p class="project-cat">Machine Learning · Forecasting</p>
+                    <h3 class="project-title">M5 Demand Forecasting</h3>
+                    <div class="project-metrics">
+                        <div class="pm">
+                            <p class="pm-value">13.51%</p>
+                            <p class="pm-label">MAPE</p>
                         </div>
-                        <a href="https://github.com/Heer1910/m5-demand-forecasting" target="_blank"
-                            class="project-link">
-                            View on GitHub
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="project-visual">
-                        <div class="project-metrics">
-                            <div class="project-metric">
-                                <p class="project-metric-value">13.51%</p>
-                                <p class="project-metric-label">MAPE</p>
-                            </div>
-                            <div class="project-metric">
-                                <p class="project-metric-value">$2.7M</p>
-                                <p class="project-metric-label">Annual ROI</p>
-                            </div>
-                            <div class="project-metric">
-                                <p class="project-metric-value">5</p>
-                                <p class="project-metric-label">Models</p>
-                            </div>
+                        <div class="pm">
+                            <p class="pm-value">$2.7M</p>
+                            <p class="pm-label">Projected ROI</p>
                         </div>
                     </div>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Business Intelligence</p>
+                    <p class="project-desc">Retail demand forecasting that beats industry benchmarks (15-25% MAPE).
+                        Compared ARIMA, XGBoost, and Seasonal Naive with rolling validation.</p>
+                    <div class="project-tech">
+                        <span>Python</span><span>XGBoost</span><span>ARIMA</span><span>Pandas</span></div>
+                    <a href="https://github.com/Heer1910/m5-demand-forecasting" target="_blank"
+                        class="project-link">View on GitHub <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="bi">
+                    <p class="project-cat">Business Intelligence</p>
                     <h3 class="project-title">Retail KPI Dashboard</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">100K+</p>
-                            <p class="project-metric-label">Orders</p>
-                        </div>
-                        <div class="project-metric">
-                            <p class="project-metric-value">10+</p>
-                            <p class="project-metric-label">KPIs</p>
+                        <div class="pm">
+                            <p class="pm-value">100K+</p>
+                            <p class="pm-label">Orders</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        End-to-end analytics pipeline: raw → staging → star schema in BigQuery. Surfaced 10+ KPIs via
-                        Tableau revealing 55% revenue decline patterns.
-                    </p>
-                    <div class="project-tech">
-                        <span>SQL</span>
-                        <span>BigQuery</span>
-                        <span>Tableau</span>
-                    </div>
-                    <a href="https://github.com/Heer1910/retail-kpi-dashboard" target="_blank" class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p class="project-desc">Built a full data pipeline: raw → staging → star schema in BigQuery. Created
+                        Tableau dashboards surfacing 10+ KPIs.</p>
+                    <div class="project-tech"><span>SQL</span><span>BigQuery</span><span>Tableau</span></div>
+                    <a href="https://github.com/Heer1910/retail-kpi-dashboard" target="_blank" class="project-link">View
+                        project <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Healthcare Analytics</p>
-                    <h3 class="project-title">FitBit Wellness Analytics</h3>
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="analytics">
+                    <p class="project-cat">Healthcare Analytics</p>
+                    <h3 class="project-title">FitBit Wellness Analysis</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">100K+</p>
-                            <p class="project-metric-label">Records</p>
-                        </div>
-                        <div class="project-metric">
-                            <p class="project-metric-value">30+</p>
-                            <p class="project-metric-label">Users</p>
+                        <div class="pm">
+                            <p class="pm-value">100K+</p>
+                            <p class="pm-label">Records</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        Statistical analysis platform for wearable data. Identified correlations between activity,
-                        sleep, and calorie metrics with reproducible R reports.
-                    </p>
-                    <div class="project-tech">
-                        <span>R</span>
-                        <span>SQL</span>
-                        <span>RMarkdown</span>
-                        <span>ggplot2</span>
-                    </div>
+                    <p class="project-desc">Analyzed wearable data to find correlations between activity, sleep, and
+                        calories. Built reproducible reports in R Markdown.</p>
+                    <div class="project-tech"><span>R</span><span>ggplot2</span><span>SQL</span></div>
                     <a href="https://github.com/Heer1910/fitbit-wellness-analytics" target="_blank"
-                        class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        class="project-link">View project <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
-
-                <article class="project-card featured fade-in">
-                    <div class="project-content">
-                        <p class="project-category">Financial Modeling</p>
-                        <h3 class="project-title">Qantas Airways DCF Analysis</h3>
-                        <p class="project-description">
-                            Comprehensive financial statement analysis and DCF modeling (2014-2017). Achieved 95%
-                            accuracy in YoY predictions and identified $10M+ in cost-saving opportunities through
-                            balance sheet analysis.
-                        </p>
-                        <div class="project-tech">
-                            <span>Excel</span>
-                            <span>DCF Modeling</span>
-                            <span>Financial Analysis</span>
+                        </svg></a>
+                </div>
+                <div class="project-card featured fade-in" data-category="finance">
+                    <p class="project-cat">Financial Modeling</p>
+                    <h3 class="project-title">Qantas Airways DCF Valuation</h3>
+                    <div class="project-metrics">
+                        <div class="pm">
+                            <p class="pm-value">95%</p>
+                            <p class="pm-label">Accuracy</p>
                         </div>
-                        <a href="https://github.com/Heer1910" target="_blank" class="project-link">
-                            View analysis
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="project-visual">
-                        <div class="project-metrics">
-                            <div class="project-metric">
-                                <p class="project-metric-value">95%</p>
-                                <p class="project-metric-label">Accuracy</p>
-                            </div>
-                            <div class="project-metric">
-                                <p class="project-metric-value">$10M+</p>
-                                <p class="project-metric-label">Savings ID'd</p>
-                            </div>
-                            <div class="project-metric">
-                                <p class="project-metric-value">4yr</p>
-                                <p class="project-metric-label">Analysis</p>
-                            </div>
+                        <div class="pm">
+                            <p class="pm-value">$10M+</p>
+                            <p class="pm-label">Savings ID'd</p>
                         </div>
                     </div>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Classification · ML</p>
+                    <p class="project-desc">Four-year financial analysis with DCF modeling. Identified cost-saving
+                        opportunities exceeding $10M through balance sheet analysis.</p>
+                    <div class="project-tech"><span>Excel</span><span>DCF</span><span>Financial Analysis</span></div>
+                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">View analysis <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="ml">
+                    <p class="project-cat">Classification</p>
                     <h3 class="project-title">Telecom Churn Prediction</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">90%</p>
-                            <p class="project-metric-label">AUC</p>
-                        </div>
-                        <div class="project-metric">
-                            <p class="project-metric-value">5K</p>
-                            <p class="project-metric-label">Records</p>
+                        <div class="pm">
+                            <p class="pm-value">90%</p>
+                            <p class="pm-label">AUC</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        ML classification pipeline achieving 90% AUC. Feature engineering across tenure, usage, and
-                        billing to identify high-risk customer segments.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Scikit-learn</span>
-                        <span>XGBoost</span>
-                    </div>
-                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p class="project-desc">Predicted customer churn with 90% AUC. Feature engineering on tenure, usage
+                        patterns, and billing data.</p>
+                    <div class="project-tech"><span>Python</span><span>Scikit-learn</span><span>XGBoost</span></div>
+                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">View project <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Market Analysis</p>
-                    <h3 class="project-title">Crypto Market Analysis</h3>
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="analytics">
+                    <p class="project-cat">Market Analysis</p>
+                    <h3 class="project-title">Crypto Market Trends</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">10K+</p>
-                            <p class="project-metric-label">Records</p>
-                        </div>
-                        <div class="project-metric">
-                            <p class="project-metric-value">15%</p>
-                            <p class="project-metric-label">Vol Spike</p>
+                        <div class="pm">
+                            <p class="pm-value">10K+</p>
+                            <p class="pm-label">Records</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        Time-series analysis identifying market trends. Revealed 15% trading volume spikes correlated
-                        with market cap changes.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Pandas</span>
-                        <span>Matplotlib</span>
-                    </div>
-                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p class="project-desc">Time-series analysis of crypto markets. Found 15% volume spikes correlated
+                        with market cap shifts.</p>
+                    <div class="project-tech"><span>Python</span><span>Pandas</span><span>Matplotlib</span></div>
+                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">View project <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Supply Chain</p>
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="analytics">
+                    <p class="project-cat">Supply Chain</p>
                     <h3 class="project-title">Logistics Optimization</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">-18%</p>
-                            <p class="project-metric-label">Delivery Time</p>
+                        <div class="pm">
+                            <p class="pm-value">-18%</p>
+                            <p class="pm-label">Delivery Time</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        Supply chain analysis optimizing delivery routes and scheduling. Data-driven route planning
-                        reduced delivery times by 18%.
-                    </p>
-                    <div class="project-tech">
-                        <span>Excel</span>
-                        <span>Analytics</span>
-                        <span>Optimization</span>
-                    </div>
-                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p class="project-desc">Optimized delivery routes through data analysis. Reduced average delivery
+                        times by 18%.</p>
+                    <div class="project-tech"><span>Excel</span><span>Optimization</span></div>
+                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">View project <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
-
-                <article class="project-card fade-in">
-                    <p class="project-category">Business Intelligence</p>
-                    <h3 class="project-title">Competitive Pricing Dashboard</h3>
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="bi">
+                    <p class="project-cat">Business Intelligence</p>
+                    <h3 class="project-title">Pricing Analytics Dashboard</h3>
                     <div class="project-metrics">
-                        <div class="project-metric">
-                            <p class="project-metric-value">+12%</p>
-                            <p class="project-metric-label">Margin Lift</p>
+                        <div class="pm">
+                            <p class="pm-value">+12%</p>
+                            <p class="pm-label">Margin Lift</p>
                         </div>
                     </div>
-                    <p class="project-description">
-                        Power BI dashboard tracking market trends and competitor pricing. Enabled decisions that
-                        increased margins by 12%.
-                    </p>
-                    <div class="project-tech">
-                        <span>Power BI</span>
-                        <span>DAX</span>
-                        <span>SQL</span>
-                    </div>
-                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">
-                        View project
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p class="project-desc">Power BI dashboard tracking competitor pricing. Enabled decisions that
+                        boosted margins by 12%.</p>
+                    <div class="project-tech"><span>Power BI</span><span>DAX</span><span>SQL</span></div>
+                    <a href="https://github.com/Heer1910" target="_blank" class="project-link">View project <svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </article>
+                        </svg></a>
+                </div>
+                <div class="project-card fade-in" data-category="ml">
+                    <p class="project-cat">NLP · Sentiment</p>
+                    <h3 class="project-title">Product Review Analyzer</h3>
+                    <div class="project-metrics">
+                        <div class="pm">
+                            <p class="pm-value">85%</p>
+                            <p class="pm-label">Accuracy</p>
+                        </div>
+                    </div>
+                    <p class="project-desc">Sentiment analysis on 50K+ product reviews using NLP. Classified reviews to
+                        extract actionable insights.</p>
+                    <div class="project-tech"><span>Python</span><span>NLTK</span><span>Transformers</span></div>
+                    <span class="project-link" style="color:var(--text-muted)">Coming soon</span>
+                </div>
             </div>
         </section>
 
         <section id="skills">
             <div class="section-header fade-in">
-                <p class="section-label">Expertise</p>
-                <h2 class="section-title">Technical depth</h2>
+                <p class="section-label">Skills</p>
+                <h2 class="section-title">What I work with</h2>
             </div>
-
             <div class="skills-grid">
                 <div class="skill-group fade-in">
                     <h3>Languages</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Python <span class="skill-level">Expert</span></div>
-                        <div class="skill-item">SQL <span class="skill-level">Expert</span></div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">SQL</div>
                         <div class="skill-item">R</div>
                         <div class="skill-item">PySpark</div>
                         <div class="skill-item">Java</div>
                     </div>
                 </div>
-
                 <div class="skill-group fade-in">
                     <h3>ML & Analytics</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Scikit-learn <span class="skill-level">Expert</span></div>
+                        <div class="skill-item">Scikit-learn</div>
                         <div class="skill-item">TensorFlow</div>
                         <div class="skill-item">PyTorch</div>
                         <div class="skill-item">Time Series</div>
                         <div class="skill-item">Statistical Modeling</div>
                     </div>
                 </div>
-
                 <div class="skill-group fade-in">
                     <h3>Cloud & Data</h3>
                     <div class="skill-list">
-                        <div class="skill-item">BigQuery <span class="skill-level">Expert</span></div>
+                        <div class="skill-item">BigQuery</div>
                         <div class="skill-item">AWS</div>
                         <div class="skill-item">Azure</div>
                         <div class="skill-item">ETL Pipelines</div>
                         <div class="skill-item">Data Modeling</div>
                     </div>
                 </div>
-
                 <div class="skill-group fade-in">
                     <h3>Visualization</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Tableau <span class="skill-level">Expert</span></div>
-                        <div class="skill-item">Power BI <span class="skill-level">Expert</span></div>
+                        <div class="skill-item">Tableau</div>
+                        <div class="skill-item">Power BI</div>
                         <div class="skill-item">Looker</div>
                         <div class="skill-item">Matplotlib</div>
-                        <div class="skill-item">Excel (Advanced)</div>
+                        <div class="skill-item">Excel</div>
                     </div>
                 </div>
             </div>
@@ -1265,119 +1145,75 @@
         <section id="education">
             <div class="section-header fade-in">
                 <p class="section-label">Education</p>
-                <h2 class="section-title">Academic foundation</h2>
+                <h2 class="section-title">Where I'm learning</h2>
             </div>
-
-            <div class="education-card fade-in">
-                <div class="education-badge">
-                    <span>UIC</span>
-                </div>
-                <div class="education-content">
+            <div class="edu-card fade-in">
+                <div class="edu-badge">UIC</div>
+                <div class="edu-content">
                     <h3>University of Illinois Chicago</h3>
-                    <h4>Bachelor of Science · Expected May 2026</h4>
-                    <div class="education-details">
-                        <div class="education-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    <h4>B.S. Information & Decision Sciences + Finance · Expected May 2026</h4>
+                    <div class="edu-details">
+                        <div class="edu-detail"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                            Information & Decision Sciences + Finance
-                        </div>
-                        <div class="education-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                            </svg>
-                            GPA: 3.72/4.0
-                        </div>
-                        <div class="education-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>3.72 GPA</div>
+                        <div class="edu-detail"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                            </svg>
-                            Dean's List 2024–2026
-                        </div>
-                        <div class="education-detail">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            </svg>Dean's List 2024–26</div>
+                        <div class="edu-detail"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                            Co-Director PR @ BAO
-                        </div>
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>Co-Director PR @ BAO</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact-section" id="contact">
-            <h2 class="contact-title fade-in">Let's connect.</h2>
-            <p class="contact-description fade-in">
-                Looking for Data Scientist, ML Engineer, or Analytics roles starting May 2026.
-            </p>
+        <section class="contact" id="contact">
+            <h2 class="contact-title fade-in">Let's <em>connect.</em></h2>
+            <p class="contact-desc fade-in">Looking for full-time roles in Data Science, ML Engineering, or Analytics
+                starting May 2026.</p>
             <div class="contact-links fade-in">
-                <a href="mailto:heerpatel7016@gmail.com" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="mailto:heerpatel7016@gmail.com" class="contact-link"><svg xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Email
-                </a>
-                <a href="https://www.linkedin.com/in/heerpatel19/" target="_blank" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    </svg>Email</a>
+                <a href="https://www.linkedin.com/in/heerpatel19/" target="_blank" class="contact-link"><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/Heer1910" target="_blank" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    </svg>LinkedIn</a>
+                <a href="https://github.com/Heer1910" target="_blank" class="contact-link"><svg
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    GitHub
-                </a>
-                <a href="tel:+12247160701" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    </svg>GitHub</a>
+                <a href="tel:+12247160701" class="contact-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    (224) 716-0701
-                </a>
+                    </svg>(224) 716-0701</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p class="footer-text">© 2026 Heer Patel</p>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/heerpatel19/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/Heer1910" target="_blank">GitHub</a>
-            <a href="mailto:heerpatel7016@gmail.com">Email</a>
-        </div>
+        <div class="footer-links"><a href="https://www.linkedin.com/in/heerpatel19/" target="_blank">LinkedIn</a><a
+                href="https://github.com/Heer1910" target="_blank">GitHub</a><a
+                href="mailto:heerpatel7016@gmail.com">Email</a></div>
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+        const observer = new IntersectionObserver(e => { e.forEach(t => { t.isIntersecting && t.target.classList.add('visible') }) }, { threshold: .1 });
+        document.querySelectorAll('.fade-in').forEach(e => observer.observe(e));
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' }) }) });
+        document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', function () { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); const filter = this.dataset.filter; document.querySelectorAll('.project-card').forEach(card => { card.style.display = filter === 'all' || card.dataset.category === filter ? 'block' : 'none' }) }) });
     </script>
 </body>
 
