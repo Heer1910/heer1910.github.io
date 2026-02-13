@@ -245,7 +245,27 @@
             font-size: 14px;
             font-weight: 600;
             border-radius: 10px;
-            transition: all .2s
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+            overflow: hidden
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: transform .5s;
+            pointer-events: none
+        }
+
+        .btn:active::after {
+            transform: translate(-50%, -50%) scale(2)
         }
 
         .btn-primary {
@@ -438,7 +458,27 @@
             padding: 32px;
             transition: all .4s cubic-bezier(.4, 0, .2, 1);
             transform-style: preserve-3d;
-            perspective: 1000px
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity .4s;
+            pointer-events: none
+        }
+
+        .project-card:hover::before {
+            opacity: 1
         }
 
         .projects-grid:hover .project-card {
@@ -450,8 +490,8 @@
             opacity: 1;
             filter: blur(0);
             border-color: var(--accent);
-            transform: translateY(-8px) rotateX(2deg);
-            box-shadow: 0 30px 60px rgba(59, 130, 246, 0.2)
+            transform: translateY(-12px) rotateX(2deg) scale(1.02);
+            box-shadow: 0 40px 80px rgba(59, 130, 246, 0.3)
         }
 
         .project-card.featured {
@@ -480,8 +520,18 @@
         }
 
         .pm-value {
-            font-size: 28px;
-            font-weight: 700
+            font-size: 40px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            transition: transform .3s;
+        }
+
+        .project-card:hover .pm-value {
+            transform: scale(1.05)
         }
 
         .pm-label {
@@ -565,12 +615,33 @@
         .skill-list {
             display: flex;
             flex-direction: column;
-            gap: 12px
+            gap: 16px
         }
 
         .skill-item {
             font-size: 14px;
-            color: var(--text-secondary)
+            color: var(--text-secondary);
+            position: relative;
+            padding-bottom: 8px
+        }
+
+        .skill-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            border-radius: 2px;
+            transition: width 1s cubic-bezier(.4, 0, .2, 1);
+            width: 0
+        }
+
+        .skill-item.visible .skill-bar {
+            width: var(--skill-level)
+        }
+
+        .skill-item:hover .skill-bar {
+            box-shadow: 0 0 10px var(--accent-glow)
         }
 
         .edu-card {
@@ -730,6 +801,37 @@
             opacity: 1;
             transform: translateY(0)
         }
+
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-card) 25%, rgba(255,255,255,0.05) 50%, var(--bg-card) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0 }
+            100% { background-position: -200% 0 }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9)
+            }
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s }
+        .stagger-2 { animation-delay: 0.2s }
+        .stagger-3 { animation-delay: 0.3s }
+        .stagger-4 { animation-delay: 0.4s }
+        .stagger-5 { animation-delay: 0.5s }
+        .stagger-6 { animation-delay: 0.6s }
+        .stagger-7 { animation-delay: 0.7s }
 
         @media(max-width:1024px) {
 
@@ -920,7 +1022,7 @@
                 <button class="filter-btn" data-filter="bi">Business Intelligence</button>
             </div>
             <div class="projects-grid">
-                <div class="project-card featured fade-in" data-category="ml">
+                <div class="project-card featured fade-in stagger-1" data-category="ml">
                     <p class="project-cat">Machine Learning · Forecasting</p>
                     <h3 class="project-title">M5 Demand Forecasting</h3>
                     <div class="project-metrics">
@@ -944,7 +1046,7 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg></a>
                 </div>
-                <div class="project-card fade-in" data-category="bi">
+                <div class="project-card fade-in stagger-2" data-category="bi">
                     <p class="project-cat">Business Intelligence</p>
                     <h3 class="project-title">Retail KPI Dashboard</h3>
                     <div class="project-metrics">
@@ -963,7 +1065,7 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg></a>
                 </div>
-                <div class="project-card fade-in" data-category="analytics">
+                <div class="project-card fade-in stagger-3" data-category="analytics">
                     <p class="project-cat">Healthcare Analytics</p>
                     <h3 class="project-title">FitBit Wellness Analysis</h3>
                     <div class="project-metrics">
@@ -983,7 +1085,7 @@
                         </svg></a>
                 </div>
 
-                <div class="project-card fade-in" data-category="ml">
+                <div class="project-card fade-in stagger-4" data-category="ml">
                     <p class="project-cat">Classification</p>
                     <h3 class="project-title">Telecom Churn Prediction</h3>
                     <div class="project-metrics">
@@ -1001,7 +1103,7 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg></a>
                 </div>
-                <div class="project-card fade-in" data-category="analytics">
+                <div class="project-card fade-in stagger-5" data-category="analytics">
                     <p class="project-cat">Product Analytics</p>
                     <h3 class="project-title">Product Funnel & Retention</h3>
                     <div class="project-metrics">
@@ -1018,7 +1120,7 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg></a>
                 </div>
-                <div class="project-card fade-in" data-category="analytics">
+                <div class="project-card fade-in stagger-6" data-category="analytics">
                     <p class="project-cat">Experimentation</p>
                     <h3 class="project-title">A/B Test Evaluation</h3>
                     <div class="project-metrics">
@@ -1035,7 +1137,7 @@
                                 d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg></a>
                 </div>
-                <div class="project-card fade-in" data-category="bi">
+                <div class="project-card fade-in stagger-7" data-category="bi">
                     <p class="project-cat">KPI Framework</p>
                     <h3 class="project-title">KPI Metric Ownership</h3>
                     <div class="project-metrics">
@@ -1065,41 +1167,41 @@
                 <div class="skill-group fade-in">
                     <h3>Languages</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">SQL</div>
-                        <div class="skill-item">R</div>
-                        <div class="skill-item">PySpark</div>
-                        <div class="skill-item">Java</div>
+                        <div class="skill-item" style="--skill-level: 95%">Python<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 90%">SQL<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 80%">R<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 75%">PySpark<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 70%">Java<div class="skill-bar"></div></div>
                     </div>
                 </div>
                 <div class="skill-group fade-in">
                     <h3>ML & Analytics</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Scikit-learn</div>
-                        <div class="skill-item">TensorFlow</div>
-                        <div class="skill-item">PyTorch</div>
-                        <div class="skill-item">Time Series</div>
-                        <div class="skill-item">Statistical Modeling</div>
+                        <div class="skill-item" style="--skill-level: 90%">Scikit-learn<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 80%">TensorFlow<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 80%">PyTorch<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 85%">Time Series<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 90%">Statistical Modeling<div class="skill-bar"></div></div>
                     </div>
                 </div>
                 <div class="skill-group fade-in">
                     <h3>Cloud & Data</h3>
                     <div class="skill-list">
-                        <div class="skill-item">BigQuery</div>
-                        <div class="skill-item">AWS</div>
-                        <div class="skill-item">Azure</div>
-                        <div class="skill-item">ETL Pipelines</div>
-                        <div class="skill-item">Data Modeling</div>
+                        <div class="skill-item" style="--skill-level: 95%">BigQuery<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 85%">AWS<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 80%">Azure<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 90%">ETL Pipelines<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 90%">Data Modeling<div class="skill-bar"></div></div>
                     </div>
                 </div>
                 <div class="skill-group fade-in">
                     <h3>Visualization</h3>
                     <div class="skill-list">
-                        <div class="skill-item">Tableau</div>
-                        <div class="skill-item">Power BI</div>
-                        <div class="skill-item">Looker</div>
-                        <div class="skill-item">Matplotlib</div>
-                        <div class="skill-item">Excel</div>
+                        <div class="skill-item" style="--skill-level: 95%">Tableau<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 95%">Power BI<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 80%">Looker<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 90%">Matplotlib<div class="skill-bar"></div></div>
+                        <div class="skill-item" style="--skill-level: 100%">Excel<div class="skill-bar"></div></div>
                     </div>
                 </div>
             </div>
@@ -1173,10 +1275,92 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver(e => { e.forEach(t => { t.isIntersecting && t.target.classList.add('visible') }) }, { threshold: .1 });
-        document.querySelectorAll('.fade-in').forEach(e => observer.observe(e));
-        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' }) }) });
-        document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', function () { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); const filter = this.dataset.filter; document.querySelectorAll('.project-card').forEach(card => { card.style.display = filter === 'all' || card.dataset.category === filter ? 'block' : 'none' }) }) });
+        // Enhanced Intersection Observer for all fade-in and skill animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger skill bar animations when skill items become visible
+                    if (entry.target.classList.contains('skill-item')) {
+                        entry.target.classList.add('visible');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade-in elements and skill items
+        document.querySelectorAll('.fade-in, .skill-item').forEach(el => observer.observe(el));
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Enhanced project filtering with smooth transitions
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const cards = document.querySelectorAll('.project-card');
+                
+                cards.forEach((card, index) => {
+                    const shouldShow = filter === 'all' || card.dataset.category === filter;
+                    
+                    if (shouldShow) {
+                        card.style.display = 'block';
+                        // Re-trigger animation with stagger
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Add button ripple effect on click
+        document.querySelectorAll('.btn, .filter-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
     </script>
 </body>
 
