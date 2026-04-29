@@ -7,9 +7,7 @@
     <title>Heer Patel — Data & ML</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0c0905;
@@ -896,13 +894,145 @@
             }
         }
 
-        section[id] {
-            scroll-margin-top: 100px
+        section[id] { scroll-margin-top: 100px }
+
+        /* ── Grain texture ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0.038;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
         }
+        body { cursor: none; }
+        a, button { cursor: none; }
+
+        /* ── Custom cursor ── */
+        .cursor-ring {
+            position: fixed; top: 0; left: 0;
+            width: 34px; height: 34px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: width .25s, height .25s, border-color .25s, opacity .3s;
+        }
+        .cursor-dot {
+            position: fixed; top: 0; left: 0;
+            width: 5px; height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+        .cursor-ring.grow { width: 54px; height: 54px; border-color: var(--purple); opacity: .6; }
+
+        /* ── Logo mono ── */
+        .logo { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: .06em; }
+        .logo-accent { color: var(--accent); }
+
+        /* ── Nav underline ── */
+        nav a:not(.nav-cta) { position: relative; }
+        nav a:not(.nav-cta)::after {
+            content: ''; position: absolute;
+            bottom: -3px; left: 0;
+            width: 0; height: 1px;
+            background: var(--accent);
+            transition: width .3s;
+        }
+        nav a:not(.nav-cta):hover::after { width: 100%; }
+        .nav-cta {
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+            color: var(--accent) !important;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 9px 20px;
+        }
+        .nav-cta:hover { background: var(--accent); color: var(--bg) !important; }
+
+        /* ── Skill ticker ── */
+        .ticker-wrap {
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 13px 0;
+            margin-bottom: -130px;
+            position: relative;
+            z-index: 1;
+        }
+        .ticker-track {
+            display: flex; gap: 52px;
+            white-space: nowrap;
+            animation: ticker 38s linear infinite;
+            width: max-content;
+        }
+        .ticker-item {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px; letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: inline-flex; align-items: center; gap: 52px;
+        }
+        .ticker-item::after { content: '◆'; font-size: 7px; color: var(--accent); }
+        @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── Section number label ── */
+        .section-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px; color: var(--accent);
+            letter-spacing: .1em; display: block;
+            margin-bottom: 8px;
+        }
+        .section-label {
+            font-family: 'DM Mono', monospace !important;
+            letter-spacing: .1em !important;
+        }
+
+        /* ── Project card creative touches ── */
+        .project-card { overflow: hidden; }
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .45s cubic-bezier(.4,0,.2,1);
+        }
+        .project-card:hover::after { transform: scaleX(1); }
+        .card-num {
+            position: absolute;
+            bottom: -16px; right: 16px;
+            font-family: 'Newsreader', serif;
+            font-size: 120px; font-weight: 300;
+            color: rgba(255, 230, 180, 0.04);
+            line-height: 1;
+            pointer-events: none; user-select: none;
+            transition: color .4s;
+        }
+        .project-card:hover .card-num { color: rgba(201, 138, 46, 0.10); }
+
+        /* ── Exp card left accent ── */
+        .exp-role { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+        .exp-metric { font-family: 'DM Mono', monospace; }
+        .tag { font-family: 'DM Mono', monospace; font-size: 11px; }
+
+        @keyframes rippleAnim { to { transform: scale(2.5); opacity: 0; } }
     </style>
 </head>
 
 <body>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
     <div class="bg-mesh">
         <div class="mesh-gradient mesh-1"></div>
         <div class="mesh-gradient mesh-2"></div>
@@ -910,7 +1040,7 @@
     </div>
 
     <header>
-        <a href="#" class="logo">Heer Patel</a>
+        <a href="#" class="logo">Heer<span class="logo-accent">.</span>Patel</a>
         <nav>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
@@ -954,10 +1084,18 @@
             </div>
         </section>
 
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <span class="ticker-item">Python</span><span class="ticker-item">SQL</span><span class="ticker-item">Machine Learning</span><span class="ticker-item">Tableau</span><span class="ticker-item">BigQuery</span><span class="ticker-item">XGBoost</span><span class="ticker-item">Scikit-learn</span><span class="ticker-item">Power BI</span><span class="ticker-item">Pandas</span><span class="ticker-item">Claude API</span><span class="ticker-item">Streamlit</span><span class="ticker-item">Plotly</span><span class="ticker-item">R</span><span class="ticker-item">ETL Pipelines</span><span class="ticker-item">Data Modeling</span><span class="ticker-item">Forecasting</span>
+                <span class="ticker-item">Python</span><span class="ticker-item">SQL</span><span class="ticker-item">Machine Learning</span><span class="ticker-item">Tableau</span><span class="ticker-item">BigQuery</span><span class="ticker-item">XGBoost</span><span class="ticker-item">Scikit-learn</span><span class="ticker-item">Power BI</span><span class="ticker-item">Pandas</span><span class="ticker-item">Claude API</span><span class="ticker-item">Streamlit</span><span class="ticker-item">Plotly</span><span class="ticker-item">R</span><span class="ticker-item">ETL Pipelines</span><span class="ticker-item">Data Modeling</span><span class="ticker-item">Forecasting</span>
+            </div>
+        </div>
+
         <section id="experience">
             <div class="section-header fade-in">
+                <span class="section-num">01 /</span>
                 <p class="section-label">Experience</p>
-                <h2 class="section-title">Where I've made an impact</h2>
+                <h2 class="section-title">Where I've made an <em>impact</em></h2>
             </div>
             <div class="exp-list">
                 <div class="exp-card fade-in">
@@ -1014,8 +1152,9 @@
 
         <section id="projects">
             <div class="section-header fade-in">
+                <span class="section-num">02 /</span>
                 <p class="section-label">Projects</p>
-                <h2 class="section-title">Things I've built</h2>
+                <h2 class="section-title">Things I've <em>built</em></h2>
             </div>
             <div class="project-filters fade-in">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -1027,6 +1166,7 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card featured fade-in stagger-1" data-category="ml">
+                    <span class="card-num">01</span>
                     <p class="project-cat">Machine Learning · Forecasting</p>
                     <h3 class="project-title">M5 Demand Forecasting</h3>
                     <div class="project-metrics">
@@ -1051,6 +1191,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card fade-in stagger-2" data-category="bi">
+                    <span class="card-num">02</span>
                     <p class="project-cat">Business Intelligence</p>
                     <h3 class="project-title">Retail KPI Dashboard</h3>
                     <div class="project-metrics">
@@ -1070,6 +1211,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card fade-in stagger-3" data-category="analytics">
+                    <span class="card-num">03</span>
                     <p class="project-cat">Healthcare Analytics</p>
                     <h3 class="project-title">FitBit Wellness Analysis</h3>
                     <div class="project-metrics">
@@ -1090,6 +1232,7 @@
                 </div>
 
                 <div class="project-card fade-in stagger-4" data-category="ml">
+                    <span class="card-num">04</span>
                     <p class="project-cat">Classification</p>
                     <h3 class="project-title">Telecom Churn Prediction</h3>
                     <div class="project-metrics">
@@ -1108,6 +1251,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card fade-in stagger-5" data-category="analytics">
+                    <span class="card-num">05</span>
                     <p class="project-cat">Product Analytics</p>
                     <h3 class="project-title">Product Funnel & Retention</h3>
                     <div class="project-metrics">
@@ -1125,6 +1269,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card fade-in stagger-6" data-category="analytics">
+                    <span class="card-num">06</span>
                     <p class="project-cat">Experimentation</p>
                     <h3 class="project-title">A/B Test Evaluation</h3>
                     <div class="project-metrics">
@@ -1142,6 +1287,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card fade-in stagger-7" data-category="bi">
+                    <span class="card-num">07</span>
                     <p class="project-cat">KPI Framework</p>
                     <h3 class="project-title">KPI Metric Ownership</h3>
                     <div class="project-metrics">
@@ -1159,6 +1305,7 @@
                         </svg></a>
                 </div>
                 <div class="project-card featured fade-in stagger-1" data-category="ai">
+                    <span class="card-num">08</span>
                     <p class="project-cat">AI · Agentic Tools</p>
                     <h3 class="project-title">Vantage — AI Business Analyst Agent</h3>
                     <div class="project-metrics">
@@ -1185,8 +1332,9 @@
 
         <section id="skills">
             <div class="section-header fade-in">
+                <span class="section-num">03 /</span>
                 <p class="section-label">Skills</p>
-                <h2 class="section-title">What I work with</h2>
+                <h2 class="section-title">What I work <em>with</em></h2>
             </div>
             <div class="skills-grid">
                 <div class="skill-group fade-in">
@@ -1234,8 +1382,9 @@
 
         <section id="education">
             <div class="section-header fade-in">
+                <span class="section-num">04 /</span>
                 <p class="section-label">Education</p>
-                <h2 class="section-title">Where I'm learning</h2>
+                <h2 class="section-title">Where I <em>learned</em></h2>
             </div>
             <div class="edu-card fade-in">
                 <div class="edu-badge">UIC</div>
@@ -1375,24 +1524,30 @@
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    pointer-events: none;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.15);
-                    transform: scale(0);
-                    animation: rippleAnim 0.6s ease-out forwards;
-                `;
-                
+                ripple.style.cssText = `position:absolute;width:${size}px;height:${size}px;left:${x}px;top:${y}px;pointer-events:none;border-radius:50%;background:rgba(255,255,255,0.15);transform:scale(0);animation:rippleAnim 0.6s ease-out forwards;`;
                 this.appendChild(ripple);
                 setTimeout(() => ripple.remove(), 600);
             });
         });
+
+        // Custom cursor
+        const ring = document.getElementById('cursorRing');
+        const dot = document.getElementById('cursorDot');
+        let mx = -100, my = -100, rx = -100, ry = -100;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+        (function animRing() {
+            rx += (mx - rx) * 0.12;
+            ry += (my - ry) * 0.12;
+            ring.style.left = rx + 'px';
+            ring.style.top = ry + 'px';
+            requestAnimationFrame(animRing);
+        })();
+        document.querySelectorAll('a, button, .project-card, .exp-card, .skill-group').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('grow'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('grow'));
+        });
+        document.addEventListener('mouseleave', () => { ring.style.opacity = '0'; dot.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { ring.style.opacity = '1'; dot.style.opacity = '1'; });
     </script>
 </body>
 
