@@ -1008,43 +1008,45 @@
     <!-- Splash Page -->
     <div id="splash" style="
         position:fixed;inset:0;z-index:50000;
-        background:#fdf5f0;
+        background:#fdf0ea;
         cursor:none;
+        display:flex;align-items:center;justify-content:center;
         overflow:hidden;
         transition:opacity 0.9s cubic-bezier(.4,0,.2,1),transform 0.9s cubic-bezier(.4,0,.2,1);
     ">
-        <!-- Full-screen girl illustration -->
+        <!-- Full illustration — contain so nothing is ever cropped -->
         <img src="girl.png" alt="Heer Patel" style="
-            position:absolute;inset:0;
+            position:absolute;
+            top:0;left:0;
             width:100%;height:100%;
-            object-fit:cover;
-            object-position:center top;
+            object-fit:contain;
+            object-position:center center;
             animation:splashFloat 7s ease-in-out infinite;
         ">
-        <!-- Soft gradient scrim at bottom for text readability -->
+        <!-- Bottom scrim for text -->
         <div style="
             position:absolute;bottom:0;left:0;right:0;
-            height:45%;
-            background:linear-gradient(to top, rgba(253,245,240,0.97) 0%, rgba(253,245,240,0.6) 55%, transparent 100%);
-            pointer-events:none;
+            height:120px;
+            background:linear-gradient(to top, #fdf0ea 0%, rgba(253,240,234,0.85) 60%, transparent 100%);
+            pointer-events:none;z-index:2;
         "></div>
-        <!-- Name + click hint -->
-        <div style="position:absolute;bottom:80px;left:0;right:0;text-align:center;z-index:3;">
-            <p style="font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#6b5744;margin-bottom:14px;font-weight:500;">Heer Patel</p>
+        <!-- Name + hint -->
+        <div style="position:absolute;bottom:52px;left:0;right:0;text-align:center;z-index:3;">
+            <p style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#6b5744;margin-bottom:12px;font-weight:500;">Heer Patel</p>
             <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b8834a;animation:splashPulse 2s ease-in-out infinite;">click anywhere to enter &nbsp;→</p>
         </div>
-        <!-- Skip button -->
+        <!-- Skip -->
         <button onclick="enterPortfolio()" style="
-            position:absolute;bottom:28px;right:36px;z-index:3;
+            position:absolute;bottom:18px;right:28px;z-index:3;
             background:transparent;border:1px solid rgba(180,140,100,0.35);
-            border-radius:4px;padding:7px 16px;
+            border-radius:4px;padding:6px 14px;
             font-family:'DM Mono',monospace;font-size:10px;
             letter-spacing:.1em;text-transform:uppercase;
             color:#a8917a;cursor:none;transition:all .2s;
         " onmouseenter="this.style.borderColor='#b8834a';this.style.color='#b8834a'" onmouseleave="this.style.borderColor='rgba(180,140,100,0.35)';this.style.color='#a8917a'">Skip →</button>
     </div>
     <style>
-        @keyframes splashFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-14px);} }
+        @keyframes splashFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
         @keyframes splashPulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
     </style>
 
