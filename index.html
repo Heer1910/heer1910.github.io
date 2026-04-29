@@ -1014,7 +1014,7 @@
         overflow:hidden;
         transition:opacity 0.9s cubic-bezier(.4,0,.2,1),transform 0.9s cubic-bezier(.4,0,.2,1);
     ">
-        <!-- Full illustration — contain so nothing is ever cropped -->
+        <!-- Full illustration -->
         <img src="girl.png" alt="Heer Patel" style="
             position:absolute;
             top:0;left:0;
@@ -1022,16 +1022,18 @@
             object-fit:contain;
             object-position:center center;
             animation:splashFloat 7s ease-in-out infinite;
-            -webkit-mask-image: radial-gradient(ellipse 82% 88% at 50% 50%, black 45%, transparent 100%);
-            mask-image: radial-gradient(ellipse 82% 88% at 50% 50%, black 45%, transparent 100%);
         ">
-        <!-- Bottom scrim for text -->
-        <div style="
-            position:absolute;bottom:0;left:0;right:0;
-            height:120px;
-            background:linear-gradient(to top, #fdf0ea 0%, rgba(253,240,234,0.85) 60%, transparent 100%);
-            pointer-events:none;z-index:2;
-        "></div>
+        <!-- Edge fade overlays — blends image into background on all sides -->
+        <div style="position:absolute;inset:0;pointer-events:none;z-index:1;">
+            <!-- Left -->
+            <div style="position:absolute;left:0;top:0;bottom:0;width:22%;background:linear-gradient(to right,#fdf0ea 20%,transparent 100%);"></div>
+            <!-- Right -->
+            <div style="position:absolute;right:0;top:0;bottom:0;width:22%;background:linear-gradient(to left,#fdf0ea 20%,transparent 100%);"></div>
+            <!-- Top -->
+            <div style="position:absolute;top:0;left:0;right:0;height:18%;background:linear-gradient(to bottom,#fdf0ea 10%,transparent 100%);"></div>
+            <!-- Bottom -->
+            <div style="position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,#fdf0ea 30%,transparent 100%);"></div>
+        </div>
         <!-- Name + hint -->
         <div style="position:absolute;bottom:52px;left:0;right:0;text-align:center;z-index:3;">
             <p style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#6b5744;margin-bottom:12px;font-weight:500;">Heer Patel</p>
